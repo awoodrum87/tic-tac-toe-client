@@ -13,58 +13,73 @@
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
-<body class = "container-fluid">
-  <div class = "sign-up">
-  <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="credentials[password]" value="" placeholder="password">
-          <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
-    </div>
-    <div class = "sign-in">
-    <form id="sign-in">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="credentials[password]" value="" placeholder="password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
-    </div>
-    <div class="change-password">
-    <form id="change-password">
-        <fieldset>
-          <legend>Change Password</legend>
-          <input type="password" name="passwords[old]" value="" placeholder="Old Password">
-          <input type="password" name="passwords[new]" value="" placeholder="New Password">
-          <input type="submit" name="submit" value="Change Password">
-        </fieldset>
-      </form>
-    </div>
+<body class="container-fluid">
+  <div class="sign-up">
+    <form id="sign-up">
+      <fieldset>
+        <legend>Sign up!</legend>
+        <input type="text" name="credentials[email]" value="" placeholder="email">
+        <input type="password" name="credentials[password]" value="" placeholder="password">
 
-  <div class = gameBoard>
+        <input type="submit" name="submit" value="Sign up!">
+      </fieldset>
+    </form>
+  </div>
+  <div class="sign-in">
+    <form id="sign-in">
+      <fieldset>
+        <legend>Sign in!</legend>
+        <input type="text" name="credentials[email]" value="" placeholder="email">
+        <input type="password" name="credentials[password]" value="" placeholder="password">
+        <input type="submit" name="submit" value="Sign in!">
+      </fieldset>
+    </form>
+  </div>
+  <form id="sign-out">
+    <fieldset>
+      <legend>Sign out!</legend>
+      <input type="submit" name="submit" value="Sign out!">
+    </fieldset>
+  </form>
+  <div class="change-password">
+    <form id="change-password">
+      <fieldset>
+        <legend>Change Password</legend>
+        <input type="password" name="passwords[old]" value="" placeholder="Old Password">
+        <input type="password" name="passwords[new]" value="" placeholder="New Password">
+        <input type="submit" name="submit" value="Change Password">
+      </fieldset>
+    </form>
+  </div>
+
+  <div class=gameBoard>
     <table>
-    <tr>
-     <td><div class = boardPiece id = indexZero > </div>0</td>
-     <td><div class = boardPiece id = indexOne> </div>1</td>
-     <td><div class = boardPiece id = indexTwo> </div>2</td>
-    </tr>
-    <tr>
-     <td><div class = boardPiece id = indexThree > </div>3</td>
-     <td><div class = boardPiece id = indexFour> </div>4</td>
-     <td><div class = boardPiece id = indexFive> </div>5</td>
-    </tr>
-     <tr>
-     <td><div class = boardPiece id = indexSix > </div>6</td>
-     <td><div class = boardPiece id = indexSeven> </div>7</td>
-     <td><div class = boardPiece id = indexEight> </div>8</td>
-     </tr>
+      <tr>
+        <td>
+          <div class=boardPiece id=indexZero> </div>0</td>
+        <td>
+          <div class=boardPiece id=indexOne> </div>1</td>
+        <td>
+          <div class=boardPiece id=indexTwo> </div>2</td>
+      </tr>
+      <tr>
+        <td>
+          <div class=boardPiece id=indexThree> </div>3</td>
+        <td>
+          <div class=boardPiece id=indexFour> </div>4</td>
+        <td>
+          <div class=boardPiece id=indexFive> </div>5</td>
+      </tr>
+      <tr>
+        <td>
+          <div class=boardPiece id=indexSix> </div>6</td>
+        <td>
+          <div class=boardPiece id=indexSeven> </div>7</td>
+        <td>
+          <div class=boardPiece id=indexEight> </div>8</td>
+      </tr>
     </table>
- </div>
+  </div>
 
 </body>
 
