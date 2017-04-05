@@ -1,2 +1,73 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+.gameBoard {
+  font-family: helvetica;
+  width: fixed;
+  height: fixed;
+  margin: 0 auto;
+}
+
+.boardPiece{
+  border-color: #97C6C6;
+  background: #97C6C6;
+  border-radius: 10px;
+}
+
+.boardPiece:hover{
+  background-color: #F7EF93;
+}
+
+#indexZero{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+
+#indexOne{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+#indexTwo{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+#indexThree{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+#indexFour{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+#indexFive{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+#indexSix{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+
+#indexSeven{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
+#indexEight{
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+}
