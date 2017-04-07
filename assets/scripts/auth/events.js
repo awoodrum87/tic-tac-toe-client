@@ -41,14 +41,31 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
-
+let gameBoard = ['', '', '', '', '', '', '', '', '']
 let playerSymbol = 'X'
 
+const determineWinner = function (gameBoard, playerSymbol) {
+// logic to determine winners
+  if (
+     (gameBoard[0] === playerSymbol && gameBoard[1] === playerSymbol && gameBoard[2] === playerSymbol) ||
+     (gameBoard[3] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[5] === playerSymbol) ||
+     (gameBoard[6] === playerSymbol && gameBoard[7] === playerSymbol && gameBoard[8] === playerSymbol) ||
+     (gameBoard[6] === playerSymbol && gameBoard[3] === playerSymbol && gameBoard[0] === playerSymbol) ||
+     (gameBoard[7] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[1] === playerSymbol) ||
+     (gameBoard[8] === playerSymbol && gameBoard[5] === playerSymbol && gameBoard[2] === playerSymbol) ||
+     (gameBoard[6] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[2] === playerSymbol) ||
+     (gameBoard[8] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[0] === playerSymbol)) {
+    console.log('we have a winner')
+  } else {
+    console.log('nada')
+  }
+}
 const onClickBoard = function () {
   event.preventDefault()
-  console.log('works')
-  // ^ all 9 squares log 'works'
   if ($(this).text() === ' ') {
+    const id = $(this).attr('id')
+    gameBoard[id] = playerSymbol
+    determineWinner(gameBoard, playerSymbol)
     $(this).text(playerSymbol)
     if (playerSymbol === 'X') {
       playerSymbol = 'O'
@@ -56,8 +73,6 @@ const onClickBoard = function () {
       playerSymbol = 'X'
     }
   }
-  // this ^ if statement works - it stops a player from clicking
-  // on a game square multiple times and changing the the displayed playerSymbol
 }
 
 const addHandlers = () => {
@@ -65,17 +80,18 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  $('#box-0').on('click', onClickBoard)
-  $('#box-1').on('click', onClickBoard)
-  $('#box-2').on('click', onClickBoard)
-  $('#box-3').on('click', onClickBoard)
-  $('#box-4').on('click', onClickBoard)
-  $('#box-5').on('click', onClickBoard)
-  $('#box-6').on('click', onClickBoard)
-  $('#box-7').on('click', onClickBoard)
-  $('#box-8').on('click', onClickBoard)
+  $('#0').on('click', onClickBoard)
+  $('#1').on('click', onClickBoard)
+  $('#2').on('click', onClickBoard)
+  $('#3').on('click', onClickBoard)
+  $('#4').on('click', onClickBoard)
+  $('#5').on('click', onClickBoard)
+  $('#6').on('click', onClickBoard)
+  $('#7').on('click', onClickBoard)
+  $('#8').on('click', onClickBoard)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onClickBoard
 }
