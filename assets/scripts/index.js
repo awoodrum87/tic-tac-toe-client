@@ -19,21 +19,21 @@ $(() => {
   authEvents.addHandlers()
 })
 
-const squaresPlayed = []
+// const squaresPlayed = []
 
 // log the square that was clicked
-$('.gameBoard').on('click', '.boardPiece', function (event) {
+// $('.gameBoard').on('click', '.boardPiece', function (event) {
   // registers the current click
-  const currentClick = $(event.currentTarget)
+  // const currentClick = $(event.currentTarget)
   // gets the index of the square that was just clicked
   // const indexOfSquare = $('.boardPiece').index(currentClick)
   // gets the X or O
-  const stringInHTML = $(currentClick).html()
-  if (stringInHTML === 'X') {
-    squaresPlayed.push('X')
-  } else {
-    squaresPlayed.push('O')
-  }
-  console.log('X or O in the DOM?:', stringInHTML)
+  // const stringInHTML = $(currentClick).html()
+  // if (stringInHTML === 'X') {
+  //   squaresPlayed.push('X')
+  // } else {
+  //   squaresPlayed.push('O')
+  // }
+  // console.log('X or O in the DOM?:', stringInHTML)
   // console.log('indexOfSquare is: ', indexOfSquare)
-})
+// })

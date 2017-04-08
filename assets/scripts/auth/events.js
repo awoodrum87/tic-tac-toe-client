@@ -43,10 +43,12 @@ const onChangePassword = function (event) {
 }
 
 // instansiated variables to be used in game winner logic and toggling between
-// players X and O
+// players X and O. Also some t/f variables to generate or stop click actions
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 let playerSymbol = 'X'
 let moveCount = 0
+let keepPlaying = true
+let winner = false
 
 // determineWinner function handles the logic for the 8 win combos by comparing the symbol
 // in the symbol in the indexes of the gameboard array to determine T or F, also displays
@@ -61,6 +63,7 @@ const determineWinner = function (gameBoard, playerSymbol) {
      (gameBoard[8] === playerSymbol && gameBoard[5] === playerSymbol && gameBoard[2] === playerSymbol) ||
      (gameBoard[6] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[2] === playerSymbol) ||
      (gameBoard[8] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[0] === playerSymbol)) {
+    winner = true
     $('.intro').text(playerSymbol + ' ' + 'wins!')
   }
 }
@@ -68,19 +71,36 @@ const determineWinner = function (gameBoard, playerSymbol) {
 // corresponding index in the gameBoard array, calls the determineWinner function,
 // toggles between X and O
 const onClickBoard = function () {
-  event.preventDefault()
-  if ($(this).text() === ' ') {
-    const id = $(this).attr('id')
-    gameBoard[id] = playerSymbol
-    determineWinner(gameBoard, playerSymbol)
-    $(this).text(playerSymbol)
-    if (playerSymbol === 'X') {
-      playerSymbol = 'O'
-    } else {
-      playerSymbol = 'X'
+  if (keepPlaying === true) {
+    event.preventDefault()
+    if ($(this).text() === ' ') {
+      const id = $(this).attr('id')
+      gameBoard[id] = playerSymbol
+      determineWinner(gameBoard, playerSymbol)
+      $(this).text(playerSymbol)
+      if (playerSymbol === 'X') {
+        playerSymbol = 'O'
+      } else {
+        playerSymbol = 'X'
+      }
+      moveCount++
+      tieGame(moveCount, winner)
+      stopClicks()
     }
-    moveCount++
-    console.log(moveCount)
+  }
+}
+
+const tieGame = function (moveCount, winner) {
+  if (moveCount === 9 && winner === false) {
+    $('.intro').text('Tie Game')
+  }
+}
+
+const stopClicks = function () {
+  if (moveCount >= 9) {
+    keepPlaying = false
+  } else if (winner === true) {
+    keepPlaying = false
   }
 }
 // this function handles starting a new game
