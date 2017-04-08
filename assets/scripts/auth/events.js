@@ -89,13 +89,15 @@ const onClickBoard = function () {
     }
   }
 }
-
+// determines if a game is tied and displays a tie game on the web page
 const tieGame = function (moveCount, winner) {
   if (moveCount === 9 && winner === false) {
     $('.intro').text('Tie Game')
   }
 }
 
+// logic to determine if game board is 'full', or if there is a winner,
+// if so reassign variables to false which will stop click actions
 const stopClicks = function () {
   if (moveCount >= 9) {
     keepPlaying = false
