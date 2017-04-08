@@ -50,20 +50,30 @@ let moveCount = 0
 let keepPlaying = true
 let winner = false
 let id = null
+const gameData =
+  {
+    'game': {
+      'cell': {
+        'index': id,
+        'value': playerSymbol
+      },
+      'over': winner
+    }
+  }
 
 // determineWinner function handles the logic for the 8 win combos by comparing the symbol
 // in the symbol in the indexes of the gameboard array to determine T or F, also displays
 // the winner
 const determineWinner = function (gameBoard, playerSymbol) {
   if (
-     (gameBoard[0] === playerSymbol && gameBoard[1] === playerSymbol && gameBoard[2] === playerSymbol) ||
-     (gameBoard[3] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[5] === playerSymbol) ||
-     (gameBoard[6] === playerSymbol && gameBoard[7] === playerSymbol && gameBoard[8] === playerSymbol) ||
-     (gameBoard[6] === playerSymbol && gameBoard[3] === playerSymbol && gameBoard[0] === playerSymbol) ||
-     (gameBoard[7] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[1] === playerSymbol) ||
-     (gameBoard[8] === playerSymbol && gameBoard[5] === playerSymbol && gameBoard[2] === playerSymbol) ||
-     (gameBoard[6] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[2] === playerSymbol) ||
-     (gameBoard[8] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[0] === playerSymbol)) {
+     ((gameBoard[0] === playerSymbol) && (gameBoard[1] === playerSymbol) && (gameBoard[2] === playerSymbol)) ||
+     ((gameBoard[3] === playerSymbol) && (gameBoard[4] === playerSymbol) && (gameBoard[5] === playerSymbol)) ||
+     ((gameBoard[6] === playerSymbol) && (gameBoard[7] === playerSymbol) && (gameBoard[8] === playerSymbol)) ||
+     ((gameBoard[6] === playerSymbol) && (gameBoard[3] === playerSymbol) && (gameBoard[0] === playerSymbol)) ||
+     ((gameBoard[7] === playerSymbol) && (gameBoard[4] === playerSymbol) && (gameBoard[1] === playerSymbol)) ||
+     ((gameBoard[8] === playerSymbol) && (gameBoard[5] === playerSymbol) && (gameBoard[2] === playerSymbol)) ||
+     ((gameBoard[6] === playerSymbol) && (gameBoard[4] === playerSymbol) && (gameBoard[2] === playerSymbol)) ||
+     ((gameBoard[8] === playerSymbol) && (gameBoard[4] === playerSymbol) && (gameBoard[0] === playerSymbol))) {
     winner = true
     $('.intro').text(playerSymbol + ' ' + 'wins!')
   }
@@ -74,7 +84,7 @@ const determineWinner = function (gameBoard, playerSymbol) {
 const onClickBoard = function () {
   if (keepPlaying === true) {
     event.preventDefault()
-    if ($(this).text() === ' ') {
+    if (($(this).text()) === ' ') {
       id = $(this).attr('id')
       gameBoard[id] = playerSymbol
       determineWinner(gameBoard, playerSymbol)
@@ -87,17 +97,10 @@ const onClickBoard = function () {
       moveCount++
       tieGame(moveCount, winner)
       stopClicks()
+      api.updateGame(gameData)
+      console.log(gameData)
     }
   }
-// {
-//   "game":{
-//     "cell": {
-//       "index": id
-//       "value": playerSymbol
-//     },
-//     "over": winner
-//   }
-// }
 }
 // determines if a game is tied and displays a tie game on the web page
 const tieGame = function (moveCount, winner) {
@@ -112,25 +115,36 @@ const stopClicks = function () {
     keepPlaying = false
   } else if (winner === true) {
     keepPlaying = false
+  } else {
+    keepPlaying = true
   }
 }
-// this function handles starting a new game
-// currently only the click handling works. No logic yet
+// this function handles starting a new game in the api
 const onNewGame = function (event) {
   event.preventDefault()
-  console.log('new game responds')
-  $('#0').text(String.fromCharCode(160))
-  $('#1').text(String.fromCharCode(160))
-  $('#2').text(String.fromCharCode(160))
-  $('#3').text(String.fromCharCode(160))
-  $('#4').text(String.fromCharCode(160))
-  $('#5').text(String.fromCharCode(160))
-  $('#6').text(String.fromCharCode(160))
-  $('#7').text(String.fromCharCode(160))
-  $('#8').text(String.fromCharCode(160))
+  clearBoard()
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
+}
+
+const clearBoard = function () {
+  gameBoard = ['', '', '', '', '', '', '', '', '']
+  playerSymbol = 'X'
+  moveCount = 0
+  keepPlaying = true
+  winner = false
+  id = null
+  $('.intro').text('Tic Tac Toe')
+  $('#0').text(' ')
+  $('#1').text(' ')
+  $('#2').text(' ')
+  $('#3').text(' ')
+  $('#4').text(' ')
+  $('#5').text(' ')
+  $('#6').text(' ')
+  $('#7').text(' ')
+  $('#8').text(' ')
 }
 
 // click handlers
