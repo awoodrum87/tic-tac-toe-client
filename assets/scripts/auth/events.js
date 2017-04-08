@@ -49,6 +49,7 @@ let playerSymbol = 'X'
 let moveCount = 0
 let keepPlaying = true
 let winner = false
+let id = null
 
 // determineWinner function handles the logic for the 8 win combos by comparing the symbol
 // in the symbol in the indexes of the gameboard array to determine T or F, also displays
@@ -74,7 +75,7 @@ const onClickBoard = function () {
   if (keepPlaying === true) {
     event.preventDefault()
     if ($(this).text() === ' ') {
-      const id = $(this).attr('id')
+      id = $(this).attr('id')
       gameBoard[id] = playerSymbol
       determineWinner(gameBoard, playerSymbol)
       $(this).text(playerSymbol)
@@ -88,6 +89,15 @@ const onClickBoard = function () {
       stopClicks()
     }
   }
+// {
+//   "game":{
+//     "cell": {
+//       "index": id
+//       "value": playerSymbol
+//     },
+//     "over": winner
+//   }
+// }
 }
 // determines if a game is tied and displays a tie game on the web page
 const tieGame = function (moveCount, winner) {
@@ -95,7 +105,6 @@ const tieGame = function (moveCount, winner) {
     $('.intro').text('Tie Game')
   }
 }
-
 // logic to determine if game board is 'full', or if there is a winner,
 // if so reassign variables to false which will stop click actions
 const stopClicks = function () {
@@ -110,6 +119,15 @@ const stopClicks = function () {
 const onNewGame = function (event) {
   event.preventDefault()
   console.log('new game responds')
+  $('#0').text(String.fromCharCode(160))
+  $('#1').text(String.fromCharCode(160))
+  $('#2').text(String.fromCharCode(160))
+  $('#3').text(String.fromCharCode(160))
+  $('#4').text(String.fromCharCode(160))
+  $('#5').text(String.fromCharCode(160))
+  $('#6').text(String.fromCharCode(160))
+  $('#7').text(String.fromCharCode(160))
+  $('#8').text(String.fromCharCode(160))
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
