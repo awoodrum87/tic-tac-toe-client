@@ -36,6 +36,14 @@ const changePasswordSuccess = (data) => {
 const changePasswordFailure = (error) => {
   console.log('password change failed. error is : ', error)
 }
+
+const newGameSuccess = (data) => {
+  console.log('new game. Data is:', data)
+}
+
+const newGameFailure = (error) => {
+  console.log('new game failed. error is: ', error)
+}
 module.exports = {
   signUpFailure,
   signUpSuccess,
@@ -44,5 +52,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  newGameSuccess,
+  newGameFailure
 }

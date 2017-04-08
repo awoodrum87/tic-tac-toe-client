@@ -37,20 +37,3 @@ $('.gameBoard').on('click', '.boardPiece', function (event) {
   console.log('X or O in the DOM?:', stringInHTML)
   // console.log('indexOfSquare is: ', indexOfSquare)
 })
-const determineWinner = function (gameBoard, playerSymbol) {
-// logic to determine winners
-  if (
-     (gameBoard[0] === playerSymbol && gameBoard[1] === playerSymbol && gameBoard[2] === playerSymbol) ||
-     (gameBoard[3] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[5] === playerSymbol) ||
-     (gameBoard[6] === playerSymbol && gameBoard[7] === playerSymbol && gameBoard[8] === playerSymbol) ||
-     (gameBoard[6] === playerSymbol && gameBoard[3] === playerSymbol && gameBoard[0] === playerSymbol) ||
-     (gameBoard[7] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[1] === playerSymbol) ||
-     (gameBoard[8] === playerSymbol && gameBoard[5] === playerSymbol && gameBoard[2] === playerSymbol) ||
-     (gameBoard[6] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[2] === playerSymbol) ||
-     (gameBoard[8] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[0] === playerSymbol)) {
-    console.log('we have a winner')
-  }
-}
-module.exports = {
-  determineWinner
-}

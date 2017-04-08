@@ -4,8 +4,9 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const api = require('./api')
 const ui = require('./ui')
-const index = require('../index.js')
 
+// the following functions retrieve the data input by the player and makes
+// requests to the server (see api.js) for the appropriate HTTP requests
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
@@ -35,17 +36,22 @@ const onChangePassword = function (event) {
   event.preventDefault()
   console.log('change password button works')
 
-// this is where my error is
   const data = getFormFields(event.target)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+
+// instansiated variables to be used in game winner logic and toggling between
+// players X and O
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 let playerSymbol = 'X'
+let moveCount = 0
 
+// determineWinner function handles the logic for the 8 win combos by comparing the symbol
+// in the symbol in the indexes of the gameboard array to determine T or F, also displays
+// the winner
 const determineWinner = function (gameBoard, playerSymbol) {
-// logic to determine winners
   if (
      (gameBoard[0] === playerSymbol && gameBoard[1] === playerSymbol && gameBoard[2] === playerSymbol) ||
      (gameBoard[3] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[5] === playerSymbol) ||
@@ -55,11 +61,12 @@ const determineWinner = function (gameBoard, playerSymbol) {
      (gameBoard[8] === playerSymbol && gameBoard[5] === playerSymbol && gameBoard[2] === playerSymbol) ||
      (gameBoard[6] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[2] === playerSymbol) ||
      (gameBoard[8] === playerSymbol && gameBoard[4] === playerSymbol && gameBoard[0] === playerSymbol)) {
-    console.log('we have a winner')
-  } else {
-    console.log('nada')
+    $('.intro').text(playerSymbol + ' ' + 'wins!')
   }
 }
+// onClickBoard function disables refresh, assigns the playerSymbol to the
+// corresponding index in the gameBoard array, calls the determineWinner function,
+// toggles between X and O
 const onClickBoard = function () {
   event.preventDefault()
   if ($(this).text() === ' ') {
@@ -72,9 +79,21 @@ const onClickBoard = function () {
     } else {
       playerSymbol = 'X'
     }
+    moveCount++
+    console.log(moveCount)
   }
 }
+// this function handles starting a new game
+// currently only the click handling works. No logic yet
+const onNewGame = function (event) {
+  event.preventDefault()
+  console.log('new game responds')
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
 
+// click handlers
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -89,9 +108,9 @@ const addHandlers = () => {
   $('#6').on('click', onClickBoard)
   $('#7').on('click', onClickBoard)
   $('#8').on('click', onClickBoard)
+  $('#new-game').on('click', onNewGame)
 }
 
 module.exports = {
-  addHandlers,
-  onClickBoard
+  addHandlers
 }
