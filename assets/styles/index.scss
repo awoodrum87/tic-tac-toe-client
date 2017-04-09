@@ -6,6 +6,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   width: fixed;
   height: fixed;
   margin-left: 600px;
+  font-size: 100px;
+  text-align: center;
 }
 
 .boardPiece{
@@ -44,4 +46,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .new-game{
   margin-top: 25px;
   margin-left: 785px;
+}
+.x-wins{
+  float: left;
+  display: inline-block;
+  padding-top: 150px;
+  margin-right: 100px;
+}
+.o-wins{
+  float: left;
+  display: inline-block;
+  padding-top: 150px;
+  margin-right: 0px;
 }

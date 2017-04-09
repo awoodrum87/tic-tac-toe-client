@@ -78,6 +78,7 @@ const determineWinner = function (gameBoard, playerSymbol) {
     $('.intro').text(playerSymbol + ' ' + 'wins!')
   }
 }
+
 // onClickBoard function disables refresh, assigns the playerSymbol to the
 // corresponding index in the gameBoard array, calls the determineWinner function,
 // toggles between X and O
@@ -89,16 +90,19 @@ const onClickBoard = function () {
       gameBoard[id] = playerSymbol
       determineWinner(gameBoard, playerSymbol)
       $(this).text(playerSymbol)
+      gameData.game.cell.value = playerSymbol
       if (playerSymbol === 'X') {
         playerSymbol = 'O'
       } else {
         playerSymbol = 'X'
       }
+      gameData.game.cell.index = id
+      // gameData.game.cell.value = playerSymbol
+      gameData.game.over = winner
+      updateGame()
       moveCount++
       tieGame(moveCount, winner)
       stopClicks()
-      api.updateGame(gameData)
-      console.log(gameData)
     }
   }
 }
@@ -146,7 +150,11 @@ const clearBoard = function () {
   $('#7').text(' ')
   $('#8').text(' ')
 }
-
+const updateGame = function () {
+  api.updateGame(gameData)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
+}
 // click handlers
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
