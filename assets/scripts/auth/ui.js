@@ -3,7 +3,6 @@
 const store = require('../store.js')
 
 const signUpSuccess = (data) => {
-  console.log(data)
 }
 
 const signUpFailure = (error) => {
@@ -11,35 +10,31 @@ const signUpFailure = (error) => {
 }
 
 const signInSuccess = (data) => {
-  console.log(data)
   store.user = data.user
 }
 
 const signInFailure = (error) => {
-  console.log(error)
+  console.error(error)
 }
 
 const signOutSuccess = (data) => {
-  console.log('Signed out. Data is: ', data)
   // store.user = null
 }
 
 const signOutFailure = (error) => {
-  console.log('Failed to sign out. Data is: ', error)
+  console.error(error)
 }
 
 const changePasswordSuccess = (data) => {
-  console.log('password changed successfully. Data is: ', data)
-  // store.user = data.user
+
 }
 
 const changePasswordFailure = (error) => {
-  console.log('password change failed. error is : ', error)
+  console.error(error)
 }
 
 const newGameSuccess = (data) => {
   store.game = data.game
-  console.log('new game. Data is:', data)
 }
 
 const newGameFailure = (error) => {
@@ -47,11 +42,21 @@ const newGameFailure = (error) => {
 }
 
 const updateGameSuccess = (data) => {
-  console.log('update game success data is: ', data)
+  store.game = data.game
 }
 
-const updateGameFailure = (error) =>{
-  console.log('error is: ', error)
+const updateGameFailure = (error) => {
+  console.error(error)
+}
+
+// need to finish this.
+const getGameSuccess = (data) => {
+  // store.game = data.games
+  // $('total-stats').text(data.games.length)
+}
+// need to finish this.
+const getGameFailure = (error) => {
+  console.log('get game error is:', error)
 }
 module.exports = {
   signUpFailure,
@@ -65,5 +70,7 @@ module.exports = {
   newGameSuccess,
   newGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  getGameSuccess,
+  getGameFailure
 }

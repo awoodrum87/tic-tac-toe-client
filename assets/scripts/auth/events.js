@@ -4,8 +4,10 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const api = require('./api')
 const ui = require('./ui')
+// const store = require('../store.js')
 
-// the following functions retrieve the data input by the player and makes
+// the following functions allow a game player to sign-up, sign in, change their password
+// and sign out by retrieving the data input by the player and making
 // requests to the server (see api.js) for the appropriate HTTP requests
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -50,6 +52,7 @@ let moveCount = 0
 let keepPlaying = true
 let winner = false
 let id = null
+// let xWins = 0
 const gameData =
   {
     'game': {
@@ -60,6 +63,24 @@ const gameData =
       'over': winner
     }
   }
+// need to finish this. The following code is to update the game stats
+// const checkXWins = function () {
+//   const myObj = store.game
+//   for (let i = 0; i < myObj.length; i++) {
+//     // console.log('my object with cells is: ', myObj.cells)
+//     if (myObj.cells[0] === 'X' && myObj.cells[0] === myObj.cells[1] && myObj.cells[0] === myObj.cells[2]) {
+//       xWins = xWins + 1
+//     }
+//   }
+// }
+// const onGameStats = function () {
+//   event.preventDefault()
+//   // checkXWins()
+//   api.getGame()
+//     .then(ui.getGameSuccess)
+//     .catch(ui.getGameFailure)
+//   // console.log(xWins)
+// }
 
 // determineWinner function handles the logic for the 8 win combos by comparing the symbol
 // in the symbol in the indexes of the gameboard array to determine T or F, also displays
@@ -99,10 +120,11 @@ const onClickBoard = function () {
       gameData.game.cell.index = id
       // gameData.game.cell.value = playerSymbol
       gameData.game.over = winner
+      console.log(gameData.game.over)
+      stopClicks()
       updateGame()
       moveCount++
       tieGame(moveCount, winner)
-      stopClicks()
     }
   }
 }
@@ -113,17 +135,17 @@ const tieGame = function (moveCount, winner) {
   }
 }
 // logic to determine if game board is 'full', or if there is a winner,
-// if so reassign variables to false which will stop click actions
+// if so reassign keepPlaying to false which will stop click actions
 const stopClicks = function () {
   if (moveCount >= 9) {
     keepPlaying = false
   } else if (winner === true) {
     keepPlaying = false
-  } else {
-    keepPlaying = true
   }
 }
-// this function handles starting a new game in the api
+// this function handles starting a new game in the api and calls the clearBoard
+// function which sets the board and all associated variables to their pregame
+// state
 const onNewGame = function (event) {
   event.preventDefault()
   clearBoard()
@@ -171,6 +193,7 @@ const addHandlers = () => {
   $('#7').on('click', onClickBoard)
   $('#8').on('click', onClickBoard)
   $('#new-game').on('click', onNewGame)
+//  $('#game-stats').on('click', onGameStats)
 }
 
 module.exports = {

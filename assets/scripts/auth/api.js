@@ -50,7 +50,7 @@ const newGame = function () {
 }
 
 const updateGame = function (data) {
-  console.log('update game data:', data)
+  // console.log('update game data:', data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -60,6 +60,18 @@ const updateGame = function (data) {
     data
   })
 }
+// Need to finish this. The following code is to get game statistics
+// const getGame = function (data) {
+//   // console.log('getGame data from API is:', data)
+//   return $.ajax({
+//     url: config.apiOrigin + '/games/',
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
 
 module.exports = {
   signUp,
@@ -68,4 +80,5 @@ module.exports = {
   changePassword,
   newGame,
   updateGame
+  // getGame
 }
