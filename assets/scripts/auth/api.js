@@ -50,7 +50,6 @@ const newGame = function () {
 }
 
 const updateGame = function (data) {
-  // console.log('update game data:', data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',

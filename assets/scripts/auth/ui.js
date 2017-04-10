@@ -38,7 +38,7 @@ const newGameSuccess = (data) => {
 }
 
 const newGameFailure = (error) => {
-  console.log('new game failed. error is: ', error)
+  console.error(error)
 }
 
 const updateGameSuccess = (data) => {
@@ -56,7 +56,7 @@ const getGameSuccess = (data) => {
 }
 // need to finish this.
 const getGameFailure = (error) => {
-  console.log('get game error is:', error)
+  console.error(error)
 }
 module.exports = {
   signUpFailure,

@@ -120,7 +120,6 @@ const onClickBoard = function () {
       gameData.game.cell.index = id
       // gameData.game.cell.value = playerSymbol
       gameData.game.over = winner
-      console.log(gameData.game.over)
       stopClicks()
       updateGame()
       moveCount++
