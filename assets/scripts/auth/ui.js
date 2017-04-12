@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const getFormFields = require('../../../lib/get-form-fields')
 
 const signUpSuccess = (data) => {
 }
@@ -51,8 +52,10 @@ const updateGameFailure = (error) => {
 
 // need to finish this.
 const getGameSuccess = (data) => {
-  // store.game = data.games
-  // $('total-stats').text(data.games.length)
+  store.gamesPlayed = data.game
+  console.log('data is:', data)
+  console.log(data.games.length)
+  $('.total-stats').text('Total Games You have played: ' + ' is' + data.games.length)
 }
 // need to finish this.
 const getGameFailure = (error) => {

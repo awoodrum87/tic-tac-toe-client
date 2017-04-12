@@ -52,7 +52,6 @@ let moveCount = 0
 let keepPlaying = true
 let winner = false
 let id = null
-// let xWins = 0
 const gameData =
   {
     'game': {
@@ -63,24 +62,18 @@ const gameData =
       'over': winner
     }
   }
-// need to finish this. The following code is to update the game stats
-// const checkXWins = function () {
-//   const myObj = store.game
-//   for (let i = 0; i < myObj.length; i++) {
-//     // console.log('my object with cells is: ', myObj.cells)
-//     if (myObj.cells[0] === 'X' && myObj.cells[0] === myObj.cells[1] && myObj.cells[0] === myObj.cells[2]) {
-//       xWins = xWins + 1
-//     }
-//   }
-// }
-// const onGameStats = function () {
-//   event.preventDefault()
-//   // checkXWins()
-//   api.getGame()
-//     .then(ui.getGameSuccess)
-//     .catch(ui.getGameFailure)
-//   // console.log(xWins)
-// }
+
+const onGameStats = function () {
+  event.preventDefault()
+  // checkXWins()
+  // const myObj = store.data.game
+  console.log('on game stats works')
+  // console.log(myObj.length)
+  api.getGame()
+    .then(ui.getGameSuccess)
+    .catch(ui.getGameFailure)
+  // console.log(xWins)
+}
 
 // determineWinner function handles the logic for the 8 win combos by comparing the symbol
 // in the symbol in the indexes of the gameboard array to determine T or F, also displays
@@ -170,6 +163,7 @@ const clearBoard = function () {
   $('#6').text(' ')
   $('#7').text(' ')
   $('#8').text(' ')
+  $('.total-stats').text(' ')
 }
 const updateGame = function () {
   api.updateGame(gameData)
@@ -192,7 +186,7 @@ const addHandlers = () => {
   $('#7').on('click', onClickBoard)
   $('#8').on('click', onClickBoard)
   $('#new-game').on('click', onNewGame)
-//  $('#game-stats').on('click', onGameStats)
+  $('#game-stats').on('click', onGameStats)
 }
 
 module.exports = {
