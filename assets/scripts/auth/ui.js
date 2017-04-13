@@ -3,6 +3,7 @@
 const store = require('../store.js')
 
 const signUpSuccess = (data) => {
+  $('.sign-in-error').hide()
 }
 
 const signUpFailure = (error) => {
@@ -11,10 +12,14 @@ const signUpFailure = (error) => {
 
 const signInSuccess = (data) => {
   store.user = data.user
+  $('.new-game').show()
+  $('.sign-in-error').text('')
+  $('.new-game-banner').text('Click New Game to start')
 }
 
 const signInFailure = (error) => {
   console.error(error)
+  $('.sign-in-error').text('You need to set up an account to login')
 }
 
 const signOutSuccess = (data) => {
@@ -35,6 +40,8 @@ const changePasswordFailure = (error) => {
 
 const newGameSuccess = (data) => {
   store.game = data.game
+  $('.sign-in-error').text('')
+  $('.new-game-banner').text('')
 }
 
 const newGameFailure = (error) => {
@@ -49,12 +56,11 @@ const updateGameFailure = (error) => {
   console.error(error)
 }
 
-// need to finish this.
 const getGameSuccess = (data) => {
-  // store.game = data.games
-  // $('total-stats').text(data.games.length)
+  store.gamesPlayed = data.game
+  $('.total-stats').text('Total Games You have played is: ' + data.games.length)
 }
-// need to finish this.
+
 const getGameFailure = (error) => {
   console.error(error)
 }

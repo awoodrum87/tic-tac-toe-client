@@ -17,4 +17,10 @@ const authEvents = require('./auth/events.js')
 // on document ready
 $(() => {
   authEvents.addHandlers()
+  $('.game-board').hide()
+  $('.intro').hide()
+  $('.game-stats').hide()
+  $('.change-password').hide()
+  $('.sign-out').hide()
+  $('.new-game').hide()
 })
