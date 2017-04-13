@@ -140,6 +140,13 @@ const stopClicks = function () {
 // state
 const onNewGame = function (event) {
   event.preventDefault()
+  $('.game-board').show()
+  $('.intro').show()
+  $('.game-stats').show()
+  $('.sign-out').show()
+  $('.change-password').show()
+  $('.sign-up').hide()
+  $('.sign-in').hide()
   clearBoard()
   api.newGame()
     .then(ui.newGameSuccess)
