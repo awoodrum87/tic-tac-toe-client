@@ -61,7 +61,6 @@ const updateGame = function (data) {
 }
 // Need to finish this. The following code is to get game statistics
 const getGame = function () {
-  // console.log('getGame data from API is:', data)
   return $.ajax({
     url: config.apiOrigin + '/games/',
     method: 'GET',
