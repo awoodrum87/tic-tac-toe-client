@@ -3,28 +3,24 @@
 # tic-tac-toe-game
 Link to Game: https://awoodrum87.github.io/tic-tac-toe-client/index.html
 
-Technologies used:
+# Technologies used:
 1. My trusty MacBook
 2. HTML and CSS (sans Bootstrap) for UI
 3. JavaScript for the game engine. The game engine processes the logic to determine
    a winner and the token that won (X or O), determine a tie, and display the winner.
 4. jQuery and Ajax for handling click events and manipulating HTML
 
-Planning and approach:
-The approach was to put together a simple front end so that I could register the clicks (most importantly, the player tokens and their index in the game board array). I assumed building the game engine and testing it would be the most challenging so I wanted to get to that as soon as possible. Then I had planned to move on to the interaction with the API (specifically getting game data, storing it, and starting a new game).
+# Planning and approach:
+The approach was to put together a simple front end so that I could register the clicks (most importantly, the player tokens and their index in the game board array). I started coding knowing exactly how I wanted to build my game logic and built my front-end and set up my functions to facilitate that. I followed this plan very closely and would absolutely not do it the same way again. Getting the game data into my game engine should have been the first step and then attack the logic. 
 
-I followed this plan very closely and I would not change my approach given the chance to do it again.
-
-Problem solving strategy:
+# Problem solving strategy:
 I tested as I coded. I usually tested before finishing the feature, usually after a line or two of code was written. I had console.log functions where ever possible so I could see what my code doing each step of the way. To solve the problems that popped up, I usually played with the order my code was in (that was most of my trouble) or just tried to tinker with it until it worked. If that did not solve my problems I opened an issue or worked with my classmates.
 
-Unsolved Problems and future iterations:
-The only outstanding requirement is to use AJAX to interact with the API to visually display game statistics. I plan to complete that by the second submission date.
-
+# Unsolved Problems and future iterations:
 For future iterations my focus would be on the UI and making it more visually appealing. I would incorporate Bootstrap Modals and
-a navigation bar to make the sign-up/in/out part of the page cleaner and not visible while playing the game.
+a navigation bar to make the sign-up/in/out part of the page cleaner.
 
-Wireframes and User Stories:
+# Wireframes and User Stories:
 Link to first draft of wireframes: https://goo.gl/photos/UPa2914MnndoBCUv8
 Link to wireframe after realizing the SPA requirement: https://goo.gl/photos/qKFzMFW27kSzG5RVA
 
