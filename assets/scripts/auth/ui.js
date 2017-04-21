@@ -33,7 +33,7 @@ const signOutSuccess = (data) => {
   $('.sign-out-message').text('You have signed out')
   $('.sign-out-message').fadeOut(4000)
   $('.new-game').hide()
-  $('.total-stats').hide()
+  $('.total-stats').text('')
   $('.change-password').hide()
   $('.sign-out').hide()
   $('.game-board').hide()
