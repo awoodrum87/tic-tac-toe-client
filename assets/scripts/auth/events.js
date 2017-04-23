@@ -4,7 +4,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('../store.js')
 
 // the following functions allow a game player to sign-up, sign in, change their password
 // and sign out by retrieving the data input by the player and making
@@ -65,14 +64,9 @@ const gameData =
 
 const onGameStats = function () {
   event.preventDefault()
-  // checkXWins()
-  // const myObj = store.data.game
-  console.log('on game stats works')
-  // console.log(myObj.length)
   api.getGame()
     .then(ui.getGameSuccess)
     .catch(ui.getGameFailure)
-  // console.log(xWins)
 }
 
 // determineWinner function handles the logic for the 8 win combos by comparing the symbol
@@ -111,7 +105,6 @@ const onClickBoard = function () {
         playerSymbol = 'X'
       }
       gameData.game.cell.index = id
-      // gameData.game.cell.value = playerSymbol
       gameData.game.over = winner
       stopClicks()
       updateGame()

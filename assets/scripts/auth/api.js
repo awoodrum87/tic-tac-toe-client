@@ -59,7 +59,7 @@ const updateGame = function (data) {
     data
   })
 }
-// Need to finish this. The following code is to get game statistics
+
 const getGame = function () {
   return $.ajax({
     url: config.apiOrigin + '/games/',

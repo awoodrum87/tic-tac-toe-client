@@ -5,13 +5,12 @@ const store = require('../store.js')
 const signUpSuccess = (data) => {
   $('.sign-up-message').text('Great! Now sign-in to start playing')
   $('.sign-in-message').text('')
-  // $('.sign-up-message').fadeOut(4000)
+  $('#sign-up').trigger('reset')
 }
 
 const signUpFailure = (error) => {
   console.error(error)
   $('.sign-up-message').text('Please create an account')
-  // $('.sign-up-message').fadeOut(4000)
 }
 
 const signInSuccess = (data) => {
@@ -20,12 +19,12 @@ const signInSuccess = (data) => {
   $('.sign-up-message').text('')
   $('.new-game').show()
   $('.new-game-banner').text('Click New Game to start')
+  $('#sign-in').trigger('reset')
 }
 
 const signInFailure = (error) => {
   console.error(error)
   $('.sign-in-message').text('You have not entered a registered name and password. Create an account or log-in')
-  // $('.sign-in-message').fadeOut(4000)
 }
 
 const signOutSuccess = (data) => {
@@ -50,6 +49,7 @@ const signOutFailure = (error) => {
 const changePasswordSuccess = (data) => {
   $('.password-message-placeholder').text('You have updated your password')
   $('.password-message-placeholder').fadeOut(4000)
+  $('#change-password').trigger('reset')
 }
 
 const changePasswordFailure = (error) => {
