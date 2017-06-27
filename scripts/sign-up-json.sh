@@ -5,7 +5,7 @@ curl --include --request POST http://localhost:4741/sign-up \
   --data '{
     "credentials":{
       "email": "angela@email.com",
-      "password":"pass1",
+      "password":"pass1"
     }
   }'
 

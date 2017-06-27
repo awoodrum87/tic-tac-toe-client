@@ -4,7 +4,7 @@ const store = require('../store.js')
 
 const signUpSuccess = (data) => {
   $('.sign-up-message').text('Great! Now sign-in to start playing')
-  $('.sign-in-message').text('')
+  $('.sign-in-message').empty()
   $('#sign-up').trigger('reset')
 }
 
@@ -15,11 +15,14 @@ const signUpFailure = (error) => {
 
 const signInSuccess = (data) => {
   store.user = data.user
-  $('.sign-in-message').text('')
-  $('.sign-up-message').text('')
+  $('.sign-in-message').empty()
+  $('.sign-up-message').empty()
   $('.new-game').show()
   $('.new-game-banner').text('Click New Game to start')
   $('#sign-in').trigger('reset')
+  $('.sign-up').hide()
+  $('.sign-in').hide()
+  $('#change-password').show()
 }
 
 const signInFailure = (error) => {
@@ -29,10 +32,8 @@ const signInFailure = (error) => {
 
 const signOutSuccess = (data) => {
   store.user = null
-  $('.sign-out-message').text('You have signed out')
-  $('.sign-out-message').fadeOut(4000)
   $('.new-game').hide()
-  $('.total-stats').text('')
+  $('.total-stats').empty()
   $('.change-password').hide()
   $('.sign-out').hide()
   $('.game-board').hide()
@@ -47,15 +48,20 @@ const signOutFailure = (error) => {
 }
 
 const changePasswordSuccess = (data) => {
-  $('.password-message-placeholder').text('You have updated your password')
-  $('.password-message-placeholder').fadeOut(4000)
+  $('#password-message-placeholder-success').alert()
+  $('#password-message-placeholder-success').fadeTo(1500, 500).slideUp(500, () => {
+    $('#password-message-placeholder-success').slideUp(500)
+  })
   $('#change-password').trigger('reset')
+  $('#change-password').hide()
 }
 
 const changePasswordFailure = (error) => {
   console.error(error)
-  $('.password-message-placeholder').text('Make sure to enter your old password and a new one!')
-  $('.password-message-placeholder').fadeOut(4000)
+  $('#password-message-placeholder-error').alert()
+  $('#password-message-placeholder-error').fadeTo(1500, 500).slideUp(500, () => {
+    $('#password-message-placeholder-error').slideUp(500)
+  })
 }
 
 const newGameSuccess = (data) => {

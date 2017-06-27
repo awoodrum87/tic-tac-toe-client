@@ -138,8 +138,6 @@ const onNewGame = function (event) {
   $('.game-stats').show()
   $('.sign-out').show()
   $('.change-password').show()
-  $('.sign-up').hide()
-  $('.sign-in').hide()
   clearBoard()
   api.newGame()
     .then(ui.newGameSuccess)

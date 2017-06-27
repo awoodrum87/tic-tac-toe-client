@@ -16,6 +16,9 @@ const authEvents = require('./auth/events.js')
 
 // on document ready
 $(() => {
+  $('.alert').hide()
+})
+$(() => {
   authEvents.addHandlers()
   $('.game-board').hide()
   $('.intro').hide()
