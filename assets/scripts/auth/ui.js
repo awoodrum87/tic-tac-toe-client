@@ -3,14 +3,20 @@
 const store = require('../store.js')
 
 const signUpSuccess = (data) => {
-  $('.sign-up-message').text('Great! Now sign-in to start playing')
-  $('.sign-in-message').empty()
+  $('#sign-up-message-success').alert()
+  $('#sign-up-message-success').fadeTo(1500, 500).slideUp(500, () => {
+    $('#sign-up-message-success').slideUp(500)
+  })
   $('#sign-up').trigger('reset')
 }
 
 const signUpFailure = (error) => {
   console.error(error)
-  $('.sign-up-message').text('Please create an account')
+  $('#sign-in').trigger('reset')
+  $('#sign-up-message').alert()
+  $('#sign-up-message').fadeTo(1500, 500).slideUp(500, () => {
+    $('#sign-up-message').slideUp(500)
+  })
 }
 
 const signInSuccess = (data) => {
@@ -27,7 +33,10 @@ const signInSuccess = (data) => {
 
 const signInFailure = (error) => {
   console.error(error)
-  $('.sign-in-message').text('You have not entered a registered name and password. Create an account or log-in')
+  $('#sign-in-message').alert()
+  $('#sign-in-message').fadeTo(1500, 500).slideUp(500, () => {
+    $('#sign-in-message').slideUp(500)
+  })
 }
 
 const signOutSuccess = (data) => {
