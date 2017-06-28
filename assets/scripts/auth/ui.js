@@ -13,6 +13,7 @@ const signUpSuccess = (data) => {
 const signUpFailure = (error) => {
   console.error(error)
   $('#sign-in').trigger('reset')
+  $('#sign-up').trigger('reset')
   $('#sign-up-message').alert()
   $('#sign-up-message').fadeTo(1500, 500).slideUp(500, () => {
     $('#sign-up-message').slideUp(500)
@@ -29,6 +30,7 @@ const signInSuccess = (data) => {
   $('.sign-up').hide()
   $('.sign-in').hide()
   $('#change-password').show()
+  $('#sign-up').trigger('reset')
 }
 
 const signInFailure = (error) => {
