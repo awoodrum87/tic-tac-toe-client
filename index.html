@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body class="container-fluid">
+  <div class="sign-up">
+    <form id="sign-up">
+      <fieldset>
+        <h3>Sign up</h3>
+        <input type="text" name="credentials[email]" value="" placeholder="email">
+        <input type="password" name="credentials[password]" value="" placeholder="password">
+
+        <input type="submit" name="submit" value="Sign up!">
+      </fieldset>
+    </form>
+  </div>
+  <div class="sign-in">
+    <form id="sign-in">
+      <fieldset>
+        <h3>Sign in</h3>
+        <input type="text" name="credentials[email]" value="" placeholder="email">
+        <input type="password" name="credentials[password]" value="" placeholder="password">
+        <input type="submit" name="submit" value="Sign in!">
+      </fieldset>
+    </form>
+  </div>
+  <div class = 'sign-out'>
+  <form id="sign-out">
+    <fieldset>
+      <h3>Sign out!</h3>
+      <input type="submit" name="submit" value="Sign out!">
+    </fieldset>
+  </form>
+</div>
+  <div class="change-password">
+    <form id="change-password">
+      <fieldset>
+        <h3>Change Password</h3>
+        <input type="password" name="passwords[old]" value="" placeholder="Old Password">
+        <input type="password" name="passwords[new]" value="" placeholder="New Password">
+        <input type="submit" name="submit" value="Change Password">
+      </fieldset>
+    </form>
+
+  </div>
+  <div class = "intro">
+    <p> Tic Tac Toe </p>
+  </div>
+  <div class = "alert alert-danger alert-fixed-top create-succes" id = "sign-in-message">
+    <p>You have not entered a correct name and password. Create an account or log-in with your credentials.</p>
+  </div>
+  <div class = "new-game-banner">
+    <p> </p>
+  </div>
+  <div class = "alert alert-danger alert-fixed-top create-succes" id = "sign-up-message">
+    <p>Please create an account with a unique username and password. </p>
+  </div>
+  <div class = "alert alert-success alert-fixed-top create-succes" id = "sign-up-message-success">
+    <p>Great! Now login to play. </p>
+  </div>
+  <div class = "alert alert-danger alert-fixed-top create-succes" id = "password-message-placeholder-error">
+    <p>Whoah! Those Passwords don't match! Try that again. </p>
+  </div>
+  <div class = "alert alert-success alert-fixed-top create-succes" id = "password-message-placeholder-success">
+    <p>Password Successfully changed. </p>
+  </div>
+
+  <div class = "sign-out-message" id = "fade-away">
+    <p> </p>
+  </div>
+  <div class=game-board>
+    <table>
+      <tr>
+        <td>
+          <div class="boardPiece" id='0'> </div></td>
+        <td>
+          <div class="boardPiece" id='1'> </div></td>
+        <td>
+          <div class="boardPiece" id='2'> </div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="boardPiece" id='3'> </div></td>
+        <td>
+          <div class="boardPiece" id='4'> </div></td>
+        <td>
+          <div class="boardPiece" id='5'> </div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="boardPiece" id='6'> </div></td>
+        <td>
+          <div class="boardPiece" id='7'> </div></td>
+        <td>
+          <div class="boardPiece" id='8'> </div></td>
+      </tr>
+    </table>
+  </div>
+  <button class = 'new-game' id = 'new-game' value="New Game!"> New Game </button>
+  <button class = 'game-stats' id = 'game-stats' value="Game Stats!"> Game Stats </button>
+  <div class = 'total-stats'> <p id = 'games-played'> </p> </div>
+
+</body>
+
+</html>
